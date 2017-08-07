@@ -1,0 +1,6 @@
+D:\Visual Studio2017 Work\ConsoleWorkPrograms\Structurs3\Structurs3\bin\Debug\Structurs3.exe.config
+D:\Visual Studio2017 Work\ConsoleWorkPrograms\Structurs3\Structurs3\bin\Debug\Structurs3.exe
+D:\Visual Studio2017 Work\ConsoleWorkPrograms\Structurs3\Structurs3\bin\Debug\Structurs3.pdb
+D:\Visual Studio2017 Work\ConsoleWorkPrograms\Structurs3\Structurs3\obj\Debug\Structurs3.csprojResolveAssemblyReference.cache
+D:\Visual Studio2017 Work\ConsoleWorkPrograms\Structurs3\Structurs3\obj\Debug\Structurs3.exe
+D:\Visual Studio2017 Work\ConsoleWorkPrograms\Structurs3\Structurs3\obj\Debug\Structurs3.pdb
