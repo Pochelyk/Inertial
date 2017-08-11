@@ -16,6 +16,7 @@ namespace Structurs3
             int R = Convert.ToInt32(circle);
             double sum = 0;
             double sum1 = 0;
+            double SUMMA = 0;
             double CentrX = 0;
             double CentrY = 0;
             double SumCircles = 0;
@@ -48,8 +49,8 @@ namespace Structurs3
                         SumBox += circles[i].AreaBox();
                         CentrX += circles[i].CTX1();
                         CentrY += circles[i].CTY1();
-                        circles[i].AX1 = +CentrX / +SumBox;
-                        circles[i].AY1 = +CentrY / +SumBox;
+                        circles[i].AX = +CentrX / +SumBox;
+                        circles[i].AY = +CentrY / +SumBox;
                         Console.WriteLine("Площадь квадрата:{0}", circles[i].AreaBox());
                         Console.WriteLine("Размер={0},координаты X={1},координаты У={2},координаты Z={3}", circles[i].R, circles[i].x, circles[i].y, circles[i].z);
                         Console.WriteLine("Центральный момент инерции квадрата:{0}", circles[i].InertialBox());
@@ -57,7 +58,8 @@ namespace Structurs3
                         Console.WriteLine("Централный момент инерции оносительно точки Ix={0}, Iy={1}", circles[i].SecondX1(), circles[i].SecondY1());
                         Console.WriteLine("Централный момент инерции оносительно точки Ic={0}", circles[i].FirstCTbox());
                         Console.WriteLine("Централный момент инерции оносительно точки Ic1={0}", circles[i].FunctionBox(+CentrX / +SumBox, +CentrY / +SumBox));
-                        Console.WriteLine("Координаты ЦТ X={0}, Y={1}", +CentrX / +SumBox, +CentrY / +SumBox);                       
+                        Console.WriteLine("Координаты ЦТ X={0}, Y={1}", +CentrX / +SumBox, +CentrY / +SumBox);
+                        sum1 += circles[i].InertialBox();
                         break;
                     case "O":
                         Console.WriteLine("Введите радиус окружности:");
@@ -88,18 +90,18 @@ namespace Structurs3
                         Console.WriteLine("Централный момент инерции оносительно точки Ix={0}, Iy={1}", circles[i].SecondX(), circles[i].SecondY());
                         Console.WriteLine("Централный момент инерции оносительно точки Ic={0}", circles[i].FirstCT());
                         Console.WriteLine("Централный момент инерции оносительно точки Ic1={0}", circles[i].Function(+CentrX / +SumCircles, +CentrY / +SumCircles));
-                        Console.WriteLine("Координаты ЦТ X={0}, Y={1}", +CentrX / +SumCircles, +CentrY / +SumCircles);                        
+                        Console.WriteLine("Координаты ЦТ X={0}, Y={1}", +CentrX / +SumCircles, +CentrY / +SumCircles);
+                        sum += circles[i].Inertial();                        
                         break;
                     default:
                         Console.WriteLine("Вы нажали неизвестную букву");
                         break;
                 }
-                sum += circles[i].Inertial();
-                sum1 += circles[i].InertialBox();
+                SUMMA = sum + sum1;
             }
-
             Console.WriteLine("Сумма моментов инерции окружностей:{0}", +sum);
             Console.WriteLine("Сумма моментов инерции квадратов:{0}", +sum1);
+            Console.WriteLine("Сумма моментов инерции квадратов и окружностей:{0}", SUMMA);
             Console.ReadKey();
         }
     }

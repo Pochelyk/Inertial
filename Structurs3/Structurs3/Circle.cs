@@ -14,8 +14,8 @@ namespace Structurs3
         public double z;        
         internal double AX;
         internal double AY;
-        internal double AX1;
-        internal double AY1;
+        //internal double AX1;
+       // internal double AY1;
         // площадь окружности
         public double Area()
         {
@@ -62,7 +62,7 @@ namespace Structurs3
         //центральный момент инерции квадрата оносительно у
         public double InertialY1()
         {
-            double Jx1= Inertial() + AreaBox() * y * y;
+            double Jx1= Inertial() + AreaBox() * x * x;
             return Jx1;
         }
 
@@ -97,7 +97,7 @@ namespace Structurs3
         //момент инерции по Х для квадрата относительно координаты общей тяжести
         public double SecondX1()
         {
-            double SecondX1 = InertialBox() + AreaBox() * (AX1 - x) * (AX1 - x);
+            double SecondX1 = InertialBox() + AreaBox() * (AX - x) * (AX - x);
             return SecondX1;
         }
         //момент инерции по У для каждой окружности относительно координаты общей тяжести
@@ -109,7 +109,7 @@ namespace Structurs3
         //момент инерции по У для квадрата относительно координаты общей тяжести
         public double SecondY1()
         {
-            double SecondY1 = InertialBox() + AreaBox() * (AY1 - y) * (AY1 - y);
+            double SecondY1 = InertialBox() + AreaBox() * (AY - y) * (AY - y);
             return SecondY1;
         }
         //длина отрезка от координаты общей тяжести до центра окружности
@@ -144,9 +144,9 @@ namespace Structurs3
             return CT;
         }
         //box
-        public double FunctionBox(double AX1, double AY1)
+        public double FunctionBox(double AX, double AY)
         {
-            double AB = Math.Sqrt((AY1 - y) * (AY1 - y) + (AX1 - x) * (AX1 - x));
+            double AB = Math.Sqrt((AY - y) * (AY - y) + (AX - x) * (AX - x));
             double CT = InertialX1() + AreaBox() * AB * AB;
             return CT;
         }
