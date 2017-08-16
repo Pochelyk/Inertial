@@ -46,12 +46,12 @@ namespace Structurs3
                         circles[i].x = X1;
                         circles[i].y = Y1;
                         circles[i].z = Z1;                       
-                        SumBox += circles[i].AreaBox();
+                        SumBox += circles[i].Area();
                         CentrX += circles[i].CTX1();
                         CentrY += circles[i].CTY1();
                         circles[i].AX = +CentrX / +SumBox;
                         circles[i].AY = +CentrY / +SumBox;
-                        Console.WriteLine("Площадь квадрата:{0}", circles[i].AreaBox());
+                        Console.WriteLine("Площадь квадрата:{0}", circles[i].Area());
                         Console.WriteLine("Размер={0},координаты X={1},координаты У={2},координаты Z={3}", circles[i].R, circles[i].x, circles[i].y, circles[i].z);
                         Console.WriteLine("Центральный момент инерции квадрата:{0}", circles[i].InertialBox());
                         Console.WriteLine("Момент инерции относительно оси Х={0}, Момент инерции относительно оси У={1}", circles[i].InertialX1(), circles[i].InertialY1());

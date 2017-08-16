@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Structurs3
 {
-    class Shape
-    {
+   abstract class Shape
+    {       
+        abstract public double Area();
         internal double R;
         public double x;
         public double y;
@@ -24,7 +25,7 @@ namespace Structurs3
     class Circle : Shape
     {
         // площадь окружности
-        public double Area()
+       override public double Area()
         {
             double S = Math.PI * R * R;
             return S;
@@ -85,7 +86,7 @@ namespace Structurs3
     class Square : Shape
     {
         //площадь квадрата
-        public double AreaBox()
+        override public double Area()
         {
             double S1 = R * R;
             return S1;
@@ -93,56 +94,56 @@ namespace Structurs3
         //момент инерции квадрата
         public double InertialBox()
         {
-            double J1 = AreaBox() * AreaBox() / 12;
+            double J1 = Area() * Area() / 12;
             return J1;
         }
         //центральный момент инерции квадрата оносительно х
         public double InertialX1()
         {
-            double Jx1 = InertialBox() + AreaBox() * y * y;
+            double Jx1 = InertialBox() + Area() * y * y;
             return Jx1;
         }
         //центральный момент инерции квадрата оносительно у
         public double InertialY1()
         {
-            double Jx1 = InertialBox() + AreaBox() * x * x;
+            double Jx1 = InertialBox() + Area() * x * x;
             return Jx1;
         }
         //box
         public double CTX1()
         {
-            double CTX1 = (x * AreaBox());
+            double CTX1 = (x * Area());
             return CTX1;
         }
         //box
         public double CTY1()
         {
-            double CTY1 = (y * AreaBox());
+            double CTY1 = (y * Area());
             return CTY1;
         }
         //момент инерции по Х для квадрата относительно координаты общей тяжести
         public double SecondX1()
         {
-            double SecondX1 = InertialBox() + AreaBox() * (AX - x) * (AX - x);
+            double SecondX1 = InertialBox() + Area() * (AX - x) * (AX - x);
             return SecondX1;
         }
         //момент инерции по У для квадрата относительно координаты общей тяжести
         public double SecondY1()
         {
-            double SecondY1 = InertialBox() + AreaBox() * (AY - y) * (AY - y);
+            double SecondY1 = InertialBox() + Area() * (AY - y) * (AY - y);
             return SecondY1;
         }
         // значение центра тяжести для каждого квадрата относительно  координаты общей тяжести
         public double FirstCTbox()
         {
-            double CT = InertialX1() + AreaBox() * FirstAB() * FirstAB();
+            double CT = InertialX1() + Area() * FirstAB() * FirstAB();
             return CT;
         }
         //box
         public double FunctionBox(double AX, double AY)
         {
             double AB = Math.Sqrt((AY - y) * (AY - y) + (AX - x) * (AX - x));
-            double CT = InertialX1() + AreaBox() * AB * AB;
+            double CT = InertialX1() + Area() * AB * AB;
             return CT;
         }
     }
