@@ -47,8 +47,8 @@ namespace Structurs3
                         circles[i].y = Y1;
                         circles[i].z = Z1;                       
                         SumBox += circles[i].Area();
-                        CentrX += circles[i].CTX1();
-                        CentrY += circles[i].CTY1();
+                        CentrX += circles[i].CTX();
+                        CentrY += circles[i].CTY();
                         circles[i].AX = +CentrX / +SumBox;
                         circles[i].AY = +CentrY / +SumBox;
                         Console.WriteLine("Площадь квадрата:{0}", circles[i].Area());

@@ -21,6 +21,16 @@ namespace Structurs3
             double AB = Math.Sqrt((AY - y) * (AY - y) + (AX - x) * (AX - x));
             return AB;
         }
+        public double CTX()
+        {
+            double CTX = (x * Area());
+            return CTX;
+        }
+        public double CTY()
+        {
+            double CTY = (y * Area());
+            return CTY;
+        }
     }
     class Circle : Shape
     {
@@ -48,16 +58,7 @@ namespace Structurs3
             double Jx = Inertial() + Area() * x * x;
             return Jx;
         }
-        public double CTX()
-        {
-            double CTX = (x * Area());
-            return CTX;
-        }
-        public double CTY()
-        {
-            double CTY = (y * Area());
-            return CTY;
-        }
+        
         //момент инерции по Х для каждой окружности относительно координаты общей тяжести
         public double SecondX()
         {
@@ -110,17 +111,7 @@ namespace Structurs3
             return Jx1;
         }
         //box
-        public double CTX1()
-        {
-            double CTX1 = (x * Area());
-            return CTX1;
-        }
-        //box
-        public double CTY1()
-        {
-            double CTY1 = (y * Area());
-            return CTY1;
-        }
+        
         //момент инерции по Х для квадрата относительно координаты общей тяжести
         public double SecondX1()
         {
