@@ -10,12 +10,13 @@ namespace Structurs3
     {       
         abstract public double Area();
         abstract public double Inertial();
-        internal double R;
+        public double R;
         public double x;
         public double y;
         public double z;
         internal double AX;
         internal double AY;
+       
         //длина отрезка от координаты общей тяжести до центра окружности
         public double FirstAB()
         {
@@ -71,8 +72,10 @@ namespace Structurs3
     }
     class Circle : Shape
     {
+        
+
         // площадь окружности
-       override public double Area()
+        override public double Area()
         {
             double S = Math.PI * R * R;
             return S;
