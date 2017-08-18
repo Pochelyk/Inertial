@@ -53,13 +53,13 @@ namespace Structurs3
                         circles[i].AY = +CentrY / +SumBox;
                         Console.WriteLine("Площадь квадрата:{0}", circles[i].Area());
                         Console.WriteLine("Размер={0},координаты X={1},координаты У={2},координаты Z={3}", circles[i].R, circles[i].x, circles[i].y, circles[i].z);
-                        Console.WriteLine("Центральный момент инерции квадрата:{0}", circles[i].InertialBox());
-                        Console.WriteLine("Момент инерции относительно оси Х={0}, Момент инерции относительно оси У={1}", circles[i].InertialX1(), circles[i].InertialY1());
-                        Console.WriteLine("Централный момент инерции оносительно точки Ix={0}, Iy={1}", circles[i].SecondX1(), circles[i].SecondY1());
-                        Console.WriteLine("Централный момент инерции оносительно точки Ic={0}", circles[i].FirstCTbox());
-                        Console.WriteLine("Централный момент инерции оносительно точки Ic1={0}", circles[i].FunctionBox(+CentrX / +SumBox, +CentrY / +SumBox));
+                        Console.WriteLine("Центральный момент инерции квадрата:{0}", circles[i].Inertial());
+                        Console.WriteLine("Момент инерции относительно оси Х={0}, Момент инерции относительно оси У={1}", circles[i].InertialX(), circles[i].InertialY());
+                        Console.WriteLine("Централный момент инерции оносительно точки Ix={0}, Iy={1}", circles[i].SecondX(), circles[i].SecondY());
+                        Console.WriteLine("Централный момент инерции оносительно точки Ic={0}", circles[i].FirstCT());
+                        Console.WriteLine("Централный момент инерции оносительно точки Ic1={0}", circles[i].Function(+CentrX / +SumBox, +CentrY / +SumBox));
                         Console.WriteLine("Координаты ЦТ X={0}, Y={1}", +CentrX / +SumBox, +CentrY / +SumBox);
-                        sum1 += circles[i].InertialBox();
+                        sum1 += circles[i].Inertial();
                         break;
                     case "O":
                         Console.WriteLine("Введите радиус окружности:");

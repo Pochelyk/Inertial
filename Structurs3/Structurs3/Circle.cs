@@ -9,6 +9,7 @@ namespace Structurs3
    abstract class Shape
     {       
         abstract public double Area();
+        abstract public double Inertial();
         internal double R;
         public double x;
         public double y;
@@ -31,34 +32,18 @@ namespace Structurs3
             double CTY = (y * Area());
             return CTY;
         }
-    }
-    class Circle : Shape
-    {
-        // площадь окружности
-       override public double Area()
-        {
-            double S = Math.PI * R * R;
-            return S;
-        }
-        //центральный момент инерции для окружности
-        public double Inertial()
-        {
-            double J = (Math.PI * (Math.Pow(R * 2, 4)) / 64);
-            return J;
-        }
-        //центральный момент инерции окружности оносительно х
+        //центральный момент инерции оносительно х
         public double InertialX()
         {
             double Jx = Inertial() + Area() * y * y;
             return Jx;
         }
-        //центральный момент инерции окружности оносительно у
+        //центральный момент инерции оносительно у
         public double InertialY()
         {
             double Jx = Inertial() + Area() * x * x;
             return Jx;
         }
-        
         //момент инерции по Х для каждой окружности относительно координаты общей тяжести
         public double SecondX()
         {
@@ -71,18 +56,33 @@ namespace Structurs3
             double SecondY = Inertial() + Area() * (AY - y) * (AY - y);
             return SecondY;
         }
-        // значение центра тяжести для каждой окружности относительно  координаты общей тяжести
-        public double FirstCT()
-        {
-            double CT = InertialX() + Area() * FirstAB() * FirstAB();
-            return CT;
-        }
         public double Function(double AX, double AY)
         {
             double AB = Math.Sqrt((AY - y) * (AY - y) + (AX - x) * (AX - x));
             double CT = InertialX() + Area() * AB * AB;
             return CT;
         }
+        // значение центра тяжести для каждой окружности относительно  координаты общей тяжести
+        public double FirstCT()
+        {
+            double CT = InertialX() + Area() * FirstAB() * FirstAB();
+            return CT;
+        }
+    }
+    class Circle : Shape
+    {
+        // площадь окружности
+       override public double Area()
+        {
+            double S = Math.PI * R * R;
+            return S;
+        }
+        //центральный момент инерции для окружности
+        override public double Inertial()
+        {
+            double J = (Math.PI * (Math.Pow(R * 2, 4)) / 64);
+            return J;
+        }       
     }
     class Square : Shape
     {
@@ -93,51 +93,14 @@ namespace Structurs3
             return S1;
         }
         //момент инерции квадрата
-        public double InertialBox()
+        override public double Inertial()
         {
             double J1 = Area() * Area() / 12;
             return J1;
-        }
-        //центральный момент инерции квадрата оносительно х
-        public double InertialX1()
-        {
-            double Jx1 = InertialBox() + Area() * y * y;
-            return Jx1;
-        }
-        //центральный момент инерции квадрата оносительно у
-        public double InertialY1()
-        {
-            double Jx1 = InertialBox() + Area() * x * x;
-            return Jx1;
-        }
-        //box
-        
-        //момент инерции по Х для квадрата относительно координаты общей тяжести
-        public double SecondX1()
-        {
-            double SecondX1 = InertialBox() + Area() * (AX - x) * (AX - x);
-            return SecondX1;
-        }
-        //момент инерции по У для квадрата относительно координаты общей тяжести
-        public double SecondY1()
-        {
-            double SecondY1 = InertialBox() + Area() * (AY - y) * (AY - y);
-            return SecondY1;
-        }
-        // значение центра тяжести для каждого квадрата относительно  координаты общей тяжести
-        public double FirstCTbox()
-        {
-            double CT = InertialX1() + Area() * FirstAB() * FirstAB();
-            return CT;
-        }
-        //box
-        public double FunctionBox(double AX, double AY)
-        {
-            double AB = Math.Sqrt((AY - y) * (AY - y) + (AX - x) * (AX - x));
-            double CT = InertialX1() + Area() * AB * AB;
-            return CT;
-        }
+        }                 
     }
+
+    
     //struct Circle
     //{
     //  internal double R;
