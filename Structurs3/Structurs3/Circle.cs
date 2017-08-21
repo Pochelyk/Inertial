@@ -11,6 +11,8 @@ namespace Structurs3
         abstract public double Area();
         abstract public double Inertial();
         public double R;
+        public double A;
+        public double B;
         public double x;
         public double y;
         public double z;
@@ -101,6 +103,19 @@ namespace Structurs3
             double J1 = Area() * Area() / 12;
             return J1;
         }                 
+    }
+    class Box : Shape
+    {
+        override public double Area()
+        {
+            double S1 = A * B;
+            return S1;
+        }
+        override public double Inertial()
+        {
+            double J1 = A * Math.Pow(B, 3) / 12;
+            return J1;
+        }
     }
 
     

@@ -33,7 +33,7 @@ namespace Structurs3
             CentrY += shape.CTY();
             shape.AX = +CentrX / +Sum;
             shape.AY = +CentrY / +Sum;
-            Console.WriteLine("Площадь квадрата:{0}", shape.Area());
+            Console.WriteLine("Площадь фигура:{0}", shape.Area());
             Console.WriteLine("Размер={0},координаты X={1},координаты У={2},координаты Z={3}", shape.R, shape.x, shape.y, shape.z);
             Console.WriteLine("Центральный момент инерции квадрата:{0}", shape.Inertial());
             Console.WriteLine("Момент инерции относительно оси Х={0}, Момент инерции относительно оси У={1}", shape.InertialX(), shape.InertialY());
@@ -55,7 +55,7 @@ namespace Structurs3
             Shape[] shapes = new Shape[R];
             for (int i = 0; i < shapes.Length; i++)
             {
-                Console.WriteLine("Введите тип сечения К-квадрат, О-окружность:");
+                Console.WriteLine("Введите тип сечения К-квадрат, О-окружность, П-прямоугольник:");
                 string size = Console.ReadLine();
                 switch (size)
                 {
@@ -64,25 +64,33 @@ namespace Structurs3
                         Console.WriteLine("Введите размер стороны квадрата:");
                         string r1 = Console.ReadLine();
                         double P1 = Convert.ToDouble(r1);
-                        shapes[i].R = P1;
-                        SetCoordinates(shapes[i]);
-                        WriteLines(shapes[i]);
-                        sum1 += shapes[i].Inertial();
+                        shapes[i].R = P1;                        
                         break;
                     case "O":
                         shapes[i] = new Circle();
                         Console.WriteLine("Введите радиус окружности:");
                         string r = Console.ReadLine();
                         double P = Convert.ToDouble(r);
-                        shapes[i].R = P;
-                        SetCoordinates(shapes[i]);
-                        WriteLines(shapes[i]);
-                        sum += shapes[i].Inertial();
+                        shapes[i].R = P;                        
+                        break;
+                    case "П":
+                        shapes[i] = new Box();
+                         Console.WriteLine("Введите ширину :");
+                         string a = Console.ReadLine();
+                        double A1 = Convert.ToDouble(a);
+                        Console.WriteLine("Введите длину:");
+                          string b = Console.ReadLine();
+                          double B1 = Convert.ToDouble(b);
+                         shapes[i].A = A1;
+                        shapes[i].B = B1;
                         break;
                     default:
                         Console.WriteLine("Вы нажали неизвестную букву");
                         break;
                 }
+                SetCoordinates(shapes[i]);
+                WriteLines(shapes[i]);
+                sum += shapes[i].Inertial();
                 SUMMA = sum + sum1;
             }
             Console.WriteLine("Сумма моментов инерции окружностей:{0}", +sum);
