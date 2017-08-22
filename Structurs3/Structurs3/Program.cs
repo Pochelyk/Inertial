@@ -34,8 +34,8 @@ namespace Structurs3
             shape.AX = +CentrX / +Sum;
             shape.AY = +CentrY / +Sum;
             Console.WriteLine("Площадь фигура:{0}", shape.Area());
-            Console.WriteLine("Размер={0},координаты X={1},координаты У={2},координаты Z={3}", shape.R, shape.x, shape.y, shape.z);
-            Console.WriteLine("Центральный момент инерции квадрата:{0}", shape.Inertial());
+            Console.WriteLine("координаты X={0},координаты У={1},координаты Z={2}", shape.x, shape.y, shape.z);
+            Console.WriteLine("Центральный момент инерции :{0}", shape.Inertial());
             Console.WriteLine("Момент инерции относительно оси Х={0}, Момент инерции относительно оси У={1}", shape.InertialX(), shape.InertialY());
             Console.WriteLine("Централный момент инерции оносительно точки Ix={0}, Iy={1}", shape.SecondX(), shape.SecondY());
             Console.WriteLine("Централный момент инерции оносительно точки Ic={0}", shape.FirstCT());
@@ -64,25 +64,28 @@ namespace Structurs3
                         Console.WriteLine("Введите размер стороны квадрата:");
                         string r1 = Console.ReadLine();
                         double P1 = Convert.ToDouble(r1);
-                        shapes[i].R = P1;                        
+                        shapes[i].size = P1;
+                        Console.WriteLine("Сторона квадрата {0}", shapes[i].size);
                         break;
                     case "O":
                         shapes[i] = new Circle();
                         Console.WriteLine("Введите радиус окружности:");
                         string r = Console.ReadLine();
                         double P = Convert.ToDouble(r);
-                        shapes[i].R = P;                        
+                        shapes[i].R = P;
+                        Console.WriteLine("Радиус окружности {0}", shapes[i].R);
                         break;
                     case "П":
                         shapes[i] = new Box();
                          Console.WriteLine("Введите ширину :");
-                         string a = Console.ReadLine();
-                        double A1 = Convert.ToDouble(a);
+                         string width = Console.ReadLine();
+                        double A = Convert.ToDouble(width);
                         Console.WriteLine("Введите длину:");
-                          string b = Console.ReadLine();
-                          double B1 = Convert.ToDouble(b);
-                         shapes[i].A = A1;
-                        shapes[i].B = B1;
+                          string height = Console.ReadLine();
+                          double B = Convert.ToDouble(height);
+                         shapes[i].width = A;
+                        shapes[i].height = B;
+                        Console.WriteLine("Ширина прямоугольника {0}, высота прямоугольника {1}", shapes[i].width, shapes[i].height);
                         break;
                     default:
                         Console.WriteLine("Вы нажали неизвестную букву");

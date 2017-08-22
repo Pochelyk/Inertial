@@ -11,8 +11,9 @@ namespace Structurs3
         abstract public double Area();
         abstract public double Inertial();
         public double R;
-        public double A;
-        public double B;
+        public double size;
+        public double width;
+        public double height;
         public double x;
         public double y;
         public double z;
@@ -94,7 +95,7 @@ namespace Structurs3
         //площадь квадрата
         override public double Area()
         {
-            double S1 = R * R;
+            double S1 = size * size;
             return S1;
         }
         //момент инерции квадрата
@@ -108,12 +109,12 @@ namespace Structurs3
     {
         override public double Area()
         {
-            double S1 = A * B;
+            double S1 = width * height;
             return S1;
         }
         override public double Inertial()
         {
-            double J1 = A * Math.Pow(B, 3) / 12;
+            double J1 = width * Math.Pow(height, 3) / 12;
             return J1;
         }
     }
