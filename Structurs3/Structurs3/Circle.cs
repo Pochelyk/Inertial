@@ -13,8 +13,7 @@ namespace Structurs3
         public double x;
         public double y;
         public double z;
-        internal double AX;
-        internal double AY;
+       
         //длина отрезка от координаты общей тяжести до центра окружности
         public double FirstAB()
         {
@@ -44,17 +43,18 @@ namespace Structurs3
             return Jx;
         }
         //момент инерции по Х для каждой окружности относительно координаты общей тяжести
-        public double SecondX()
+        public double SecondX(double AX, double AY)
         {
-            double SecondX = Inertial() + Area() * (AX - x) * (AX - x);
-            return SecondX;
+            double X = Inertial() + Area() * (AX - x) * (AX - x);
+            return X;
         }
         //момент инерции по У для каждой окружности относительно координаты общей тяжести
-        public double SecondY()
+        public double SecondY(double AX, double AY)
         {
-            double SecondY = Inertial() + Area() * (AY - y) * (AY - y);
-            return SecondY;
+            double Y = Inertial() + Area() * (AY - y) * (AY - y);
+            return y;
         }
+        
         public double Function(double AX, double AY)
         {
             double AB = Math.Sqrt((AY - y) * (AY - y) + (AX - x) * (AX - x));
