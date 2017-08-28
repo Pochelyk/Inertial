@@ -36,7 +36,7 @@ namespace Structurs3
             Console.WriteLine("Центральный момент инерции :{0}", shape.Inertial());
             Console.WriteLine("Момент инерции относительно оси Х={0}, Момент инерции относительно оси У={1}", shape.InertialX(), shape.InertialY());
             Console.WriteLine("Централный момент инерции оносительно точки Ix={0}, Iy={1}", shape.SecondX(+CentrX / +Sum, +CentrY / +Sum), shape.SecondY(+CentrX / +Sum, +CentrY / +Sum));
-            Console.WriteLine("Централный момент инерции оносительно точки Ic={0}", shape.FirstCT());
+            Console.WriteLine("Централный момент инерции оносительно точки Ic={0}", shape.FirstCT(+CentrX / +Sum, +CentrY / +Sum));
             Console.WriteLine("Централный момент инерции оносительно точки Ic1={0}", shape.Function(+CentrX / +Sum, +CentrY / +Sum));
             Console.WriteLine("Координаты ЦТ X={0}, Y={1}", +CentrX / +Sum, +CentrY / +Sum);
         }

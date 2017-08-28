@@ -13,13 +13,7 @@ namespace Structurs3
         public double x;
         public double y;
         public double z;
-       
-        //длина отрезка от координаты общей тяжести до центра окружности
-        public double FirstAB()
-        {
-            double AB = Math.Sqrt((AY - y) * (AY - y) + (AX - x) * (AX - x));
-            return AB;
-        }
+               
         public double CTX()
         {
             double CTX = (x * Area());
@@ -62,9 +56,10 @@ namespace Structurs3
             return CT;
         }
         // значение центра тяжести для каждой окружности относительно  координаты общей тяжести
-        public double FirstCT()
+        public double FirstCT(double AX, double AY)
         {
-            double CT = InertialX() + Area() * FirstAB() * FirstAB();
+            double AB = Math.Sqrt((AY - y) * (AY - y) + (AX - x) * (AX - x));
+            double CT = InertialX() + Area() * AB * AB;
             return CT;
         }
     }
