@@ -30,14 +30,14 @@ namespace Structurs3
             double Sum = 0;
             Sum += shape.Area();
             CentrX += shape.CTX();
-            CentrY += shape.CTY();           
+            CentrY += shape.CTY();
             Console.WriteLine("Площадь фигуры:{0}", shape.Area());
             Console.WriteLine("координаты X={0},координаты У={1},координаты Z={2}", shape.x, shape.y, shape.z);
             Console.WriteLine("Центральный момент инерции :{0}", shape.Inertial());
             Console.WriteLine("Момент инерции относительно оси Х={0}, Момент инерции относительно оси У={1}", shape.InertialX(), shape.InertialY());
             Console.WriteLine("Централный момент инерции оносительно точки Ix={0}, Iy={1}", shape.SecondX(+CentrX / +Sum, +CentrY / +Sum), shape.SecondY(+CentrX / +Sum, +CentrY / +Sum));
             Console.WriteLine("Централный момент инерции оносительно точки Ic={0}", shape.FirstCT(+CentrX / +Sum, +CentrY / +Sum));
-            Console.WriteLine("Централный момент инерции оносительно точки Ic1={0}", shape.Function(+CentrX / +Sum, +CentrY / +Sum));          
+            Console.WriteLine("Централный момент инерции оносительно точки Ic1={0}", shape.Function(+CentrX / +Sum, +CentrY / +Sum));
         }
         static void Main(string[] args)
         {
@@ -70,7 +70,7 @@ namespace Structurs3
                         Console.WriteLine("Сумма моментов инерции к:{0}", +sumK);
                         shapes[i] = square;
                         break;
-                        
+
                     case "O":
                         Circle circle = new Circle();
                         Console.WriteLine("Введите радиус окружности:");
@@ -100,7 +100,7 @@ namespace Structurs3
                     default:
                         Console.WriteLine("Вы нажали неизвестную букву");
                         break;
-                }                
+                }
                 Sum += shapes[i].Area();
                 CentrX += shapes[i].CTX();
                 CentrY += shapes[i].CTY();
@@ -109,7 +109,7 @@ namespace Structurs3
                 WriteLines(shapes[i]);
                 sum += shapes[i].Inertial();
             }
-            Console.WriteLine("Координаты ЦТ X={0}, Y={1}", +CentrX / +Sum, +CentrY / +Sum);
+            Console.WriteLine("Координаты ЦТ X={0}, Y={1}", CentrX / Sum, CentrY / Sum);
             Console.WriteLine("Сумма моментов инерции всех фигур:{0}", +sum);
             Console.ReadKey();
         }
