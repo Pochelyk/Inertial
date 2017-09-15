@@ -16,51 +16,48 @@ namespace Structurs3
                
         public double CTX()
         {
-            double CTX = (x * Area());
-            return CTX;
+            return (x * Area());
+            
         }
         public double CTY()
         {
-            double CTY = (y * Area());
-            return CTY;
+            return (y * Area());
+            
         }
         //центральный момент инерции оносительно х
         public double InertialX()
         {
-            double Jx = Inertial() + Area() * y * y;
-            return Jx;
+            return Inertial() + Area() * y * y;
+            
         }
         //центральный момент инерции оносительно у
         public double InertialY()
         {
-            double Jx = Inertial() + Area() * x * x;
-            return Jx;
+            return Inertial() + Area() * x * x;            
         }
         //момент инерции по Х для каждой окружности относительно координаты общей тяжести
         public double SecondX(double AX, double AY)
         {
-            double X = Inertial() + Area() * (AX - x) * (AX - x);
-            return X;
+            return Inertial() + Area() * (AX - x) * (AX - x);
+            
         }
         //момент инерции по У для каждой окружности относительно координаты общей тяжести
         public double SecondY(double AX, double AY)
         {
-            double Y = Inertial() + Area() * (AY - y) * (AY - y);
-            return y;
+            return Inertial() + Area() * (AY - y) * (AY - y);            
         }
         
         public double Function(double AX, double AY)
         {
             double AB = Math.Sqrt((AY - y) * (AY - y) + (AX - x) * (AX - x));
-            double CT = InertialX() + Area() * AB * AB;
-            return CT;
+            return InertialX() + Area() * AB * AB;
+            
         }
         // значение центра тяжести для каждой окружности относительно  координаты общей тяжести
         public double FirstCT(double AX, double AY)
         {
             double AB = Math.Sqrt((AY - y) * (AY - y) + (AX - x) * (AX - x));
-            double CT = InertialX() + Area() * AB * AB;
-            return CT;
+            return InertialX() + Area() * AB * AB;            
         }
     }
     class Circle : Shape
@@ -69,30 +66,45 @@ namespace Structurs3
         // площадь окружности
         override public double Area()
         {
-            double S = Math.PI * R * R;
-            return S;
+            return Math.PI * R * R;
         }
         //центральный момент инерции для окружности
         override public double Inertial()
         {
-            double J = (Math.PI * (Math.Pow(R * 2, 4)) / 64);
-            return J;
+            return (Math.PI * (Math.Pow(R * 2, 4)) / 64);            
         }
     }
+    class Ring : Shape {
+        public double R;
+        public double R1;
+        public double L;
+        // площадь кольца
+        override public double Area()
+        {
+            double Soutput = Math.PI * R * R;
+            double Sinput = Math.PI* R1* R1;
+            return (Soutput- Sinput)*L;
+
+        }
+        //центральный момент инерции для кольца
+        override public double Inertial()
+        {
+            return Area()*L;
+        }
+    }
+     
     class Square : Shape
     {
         public double size;
         //площадь квадрата
         override public double Area()
         {
-            double S1 = size * size;
-            return S1;
+            return size * size;            
         }
         //момент инерции квадрата
         override public double Inertial()
         {
-            double J1 = Area() * Area() / 12;
-            return J1;
+            return Area() * Area() / 12;            
         }
     }
     class Box : Shape
@@ -101,13 +113,12 @@ namespace Structurs3
         public double height;
         override public double Area()
         {
-            double S1 = width * height;
-            return S1;
+            return width * height;            
         }
         override public double Inertial()
         {
-            double J1 = width * Math.Pow(height, 3) / 12;
-            return J1;
+            return width * Math.Pow(height, 3) / 12;
+           
         }
     }
 
